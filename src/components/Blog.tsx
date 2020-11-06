@@ -1,6 +1,8 @@
 import React from "react";
+import Header from "./Header"
 import { observer } from "mobx-react-lite";
 import { useUserStore } from "../state";
+import "./Blog.css"
 
 function Blog() {
   const userStore = useUserStore();
@@ -8,8 +10,7 @@ function Blog() {
   const increment = () => userStore.increment();
   return (
     <div className="Blog">
-      <button onClick={increment}>Increment</button>
-      <p>{userStore.testCount}</p>
+      <Header/>
     </div>
   );
 }

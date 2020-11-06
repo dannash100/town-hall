@@ -4,6 +4,11 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+//Fonts
+import './fonts/LifeEF Regular.otf'
+import './fonts/LifeEF Regular Italic.otf'
+import './fonts/LifeEF Bold.otf'
+
 ReactDOM.render(
   <React.StrictMode>
     <App />
