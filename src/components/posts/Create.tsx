@@ -105,7 +105,7 @@ function CreatePost() {
         history.push("/dashboard");
       }, 2000);
     } catch (err) {
-      console.log(err)
+      console.log(err);
       setStatus(FormStatus.ERROR);
     }
   };

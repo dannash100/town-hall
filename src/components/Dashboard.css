@@ -45,3 +45,28 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.post-item {
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  /* border: 1px solid black; */
+  background: white;
+  /* border-radius: 4px; */
+  padding: 6px;
+}
+
+.post-item {
+  margin-right: 10;
+}
+
+.post-item-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-item-title {
+  font-family: 'LifeEFRegular';
+  font-size: 16px;
+  margin: 0
+}

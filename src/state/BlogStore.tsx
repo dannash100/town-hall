@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
-import { createPost, fetchPosts } from "../api/posts";
-import Post from "../types/Post";
+import { createPost, fetchPosts, updatePost, deletePost } from "../api/posts";
+import Post, { PostData, PostUpdateData } from "../types/Post";
 
 class BlogStore {
   posts: Post[] = [];
@@ -10,7 +10,26 @@ class BlogStore {
     makeAutoObservable(this);
   }
 
-  async createPost(data: Post) {
+  async deletePost(id: number) {
+    try {
+      this.posts = this.posts.filter(post => post.id !== id);
+      await deletePost(id);
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
+  async updatePost(id: number, data: PostUpdateData) {
+    try {
+      this.posts = this.posts.map(post => post.id === id ? {...post, ...data} : post);
+      const update = await updatePost(id, data);
+      console.log(update)
+    } catch(err) {
+      console.error(err)
+    }
+  }
+
+  async createPost(data: PostData) {
     try {
       const post = await createPost(data);
       console.log(post);

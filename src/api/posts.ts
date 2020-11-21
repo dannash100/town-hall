@@ -1,4 +1,4 @@
-import Post from "../types/Post"
+import Post, { PostData, PostUpdateData } from "../types/Post"
 import { postService } from "./client"
 
 // include: [{
@@ -7,6 +7,13 @@ import { postService } from "./client"
 //   through: { where: { amount: 10 } }
 // }]
 
-export const createPost = (data: Post): Promise<Post> => postService.create(data);
+export const deletePost = (id: number) => postService.remove(id);
 
-export const fetchPosts = () => postService.find();
+export const updatePost = (id: number, data: PostUpdateData): Promise<Post> => postService.patch(id, data)
+
+export const createPost = (data: PostData): Promise<Post> => postService.create(data);
+
+export const fetchPosts = async (): Promise<Post[]> => {
+  const { data } = await postService.find();
+  return data;
+}

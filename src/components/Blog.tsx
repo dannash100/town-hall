@@ -27,7 +27,8 @@ function Blog() {
       >
         <div className="blog-container">
           <Header isHome={true} />
-          <PostEntry
+          {/* <PostEntry
+            id={1}
             author="Hugo Authors"
             createdAt="September 27, 2020"
             title="Samuel Jeffery, Flora Klein at Christian Andersen"
@@ -36,6 +37,7 @@ function Blog() {
             image={landscapeImg}
           />
           <PostEntry
+            id={1}
             author="Hugo Authors"
             createdAt="September 27, 2020"
             title="Samuel Jeffery, Flora Klein at Christian Andersen"
@@ -44,13 +46,14 @@ function Blog() {
             image={landscapeImg}
           />
           <PostEntry
+            id={1}
             author="Hugo Authors"
             createdAt="September 27, 2020"
             title="Samuel Jeffery, Flora Klein at Christian Andersen"
             excerpt=""
             pdf=""
             image={landscapeImg}
-          />
+          /> */}
         </div>
       </Resizable>
       <div className="resizable-right"></div>

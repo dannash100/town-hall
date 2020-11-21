@@ -1,18 +1,56 @@
 import React, { useEffect } from "react";
 import Header from "./Header";
 import "./Dashboard.css";
-
-import { useUserStore } from "../state";
+import Post from "../types/Post";
+import { useBlogStore, useUserStore } from "../state";
 import { observer } from "mobx-react-lite";
-import { Link, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+
+const PostListItem = ({ title, published, id }: Post) => {
+  const blogStore = useBlogStore();
+  const handleUnpublish = () => blogStore.updatePost(id, { published: false });
+  const handlePublish = () => blogStore.updatePost(id, { published: true });
+
+  const handleDelete = () => blogStore.deletePost(id);
+  return (
+    <div className="post-item">
+      <p className="post-item-title">{title}</p>
+      <div style={{ flexGrow: 1 }} />
+      {published ? (
+        <button onClick={handleUnpublish} className="button">
+          Unpublish
+        </button>
+      ) : (
+        <button onClick={handlePublish} className="button">
+          Publish
+        </button>
+      )}
+      <button
+        style={{ marginLeft: 5 }}
+        onClick={handleDelete}
+        className="button"
+      >
+        Delete
+      </button>
+    </div>
+  );
+};
 
 function Dashboard() {
   const history = useHistory();
   const userStore = useUserStore();
+  const blogStore = useBlogStore();
 
   const handleLogoutDashboard = () => history.push("/login");
   const handleCreatePost = () => history.push("/posts/create");
-  const handleCreateTag = () => {}
+  const handleCreateTag = () => {};
+
+  const initiate = async () => {
+    await login();
+    if (!blogStore.posts.length) {
+      await blogStore.fetchPosts();
+    }
+  };
 
   const login = async () => {
     try {
@@ -24,7 +62,7 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    login();
+    initiate();
   }, []);
 
   return (
@@ -39,25 +77,28 @@ function Dashboard() {
         <div className="dashboard-content">
           <div className="dashboard-category">
             <div className="category-title-container">
-
-            <p className="category-title">Posts</p>
-            <button onClick={handleCreatePost} className="button">
-              Create
-            </button>
+              <p className="category-title">Posts</p>
+              <button onClick={handleCreatePost} className="button">
+                Create
+              </button>
             </div>
-          </div>
-          <div className="dashboard-category">
-          <div className="category-title-container">
-            <p className="category-title">Tags</p>
-            <button onClick={handleCreateTag} className="button">
-              Create
-            </button>
+            <div className="post-item-list">
+              {blogStore.posts.map((post) => (
+                <PostListItem {...post} />
+              ))}
             </div>
           </div>
           <div className="dashboard-category">
             <div className="category-title-container">
-
-            <p className="category-title">Users</p>
+              <p className="category-title">Tags</p>
+              <button onClick={handleCreateTag} className="button">
+                Create
+              </button>
+            </div>
+          </div>
+          <div className="dashboard-category">
+            <div className="category-title-container">
+              <p className="category-title">Users</p>
             </div>
           </div>
         </div>
