@@ -1,0 +1,148 @@
+.Register {
+  background:#ff618813;
+  min-height: 100vh;
+}
+
+.container {
+  padding: 15px 25px;
+}
+
+
+.title {
+  font-family: 'LifeEFRegular';
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-size: 26px 
+}
+
+.subtitle {
+  font-family: 'LifeEFRegular';
+  /* font-weight: bold; */
+  margin-bottom: 20px;
+  font-size: 16px 
+}
+
+
+.submit-error {
+  font-family: 'LifeEFRegular';
+  color: red;
+  font-size: 12;
+  width: 100%;
+  margin-bottom: 15px
+  /* margin-bottom: 20px; */
+}
+
+input {
+  padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	/* margin-bottom: 10px; */
+	width: 400px;
+	box-sizing: border-box;
+  font-family: 'LifeEFRegular';
+	color: #000000;
+	font-size: 13px;
+}
+
+textarea {
+  padding: 10px;
+	border: 1px solid #ccc;
+	border-radius: 3px;
+	/* margin-bottom: 10px; */
+  width: 400px;
+  /* max-width: 400px; */
+	box-sizing: border-box;
+  font-family: 'LifeEFRegular';
+	color: #000000;
+	font-size: 13px;
+}
+
+.input-container {
+  /* display: flex;
+  align-items: center; */
+  margin-bottom: 15px;
+  /* width: 500px */
+}
+
+.helper-text {
+  font-family: 'LifeEFRegular';
+	color: #000000;
+  font-size: 13px;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap
+  /* width: 500px */
+}
+
+.visibility-icon {
+  cursor: pointer;
+  margin-left: 15px;
+  font-size: 18px !important;
+}
+
+button {
+  cursor: pointer;
+  border-radius: 3px;
+  padding: 5px;
+	border: 1px solid #ccc;
+  /* box-sizing: border-box; */
+  font-family: 'LifeEFRegular';
+	/* color: #000000; */
+}
+
+@keyframes analytics-dot1 {
+  0% {
+      opacity: 0.25;
+  }
+  30% {
+      opacity: 1;
+  }
+  50%, 100% {
+      opacity: 0.25;
+  }
+}
+
+@keyframes analytics-dot2 {
+  0%, 10% {
+      opacity: 0.25;
+  }
+  40% {
+      opacity: 1;
+  }
+  70%, 100% {
+      opacity: 0.25;
+  }
+}
+
+@keyframes analytics-dot3 {
+  0%, 20% {
+    opacity: 0.25;
+  }
+  50% {
+      opacity: 1;
+  }
+  80%, 100% {
+      opacity: 0.25;
+  }
+}
+
+.dot {
+  display: flex;
+  width: 6px;
+  margin-right: 5px;
+  height: 6px;
+  background: rgb(94, 94, 94);
+  border-radius: 50%;
+  animation: analytics-dot1 1.3s infinite;
+}
+
+.dot + .dot {
+  animation-name: analytics-dot2;
+}
+
+.dot + .dot + .dot {
+  animation-name: analytics-dot3;
+}

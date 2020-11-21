@@ -1,6 +1,7 @@
 import { LoginCredentials, RegistrationCredentials } from "../types/User";
 import { client, userService } from "./client";
 
+export const logout = () => client.logout();
 
 export const login = async (credentials?: LoginCredentials) => {
   try {

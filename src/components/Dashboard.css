@@ -1,0 +1,47 @@
+.category-title {
+  font-family: 'LifeEFRegular';
+  font-weight: bold;
+  margin-right: 20px;
+  font-size: 18px 
+}
+
+.title-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px
+}
+
+.line {
+  height: 2px;
+  width: calc(50% - 56px);
+  background: grey;
+}
+
+.dashboard-title {
+  font-family: 'LifeEFRegular';
+  font-weight: bold;
+  font-size: 28px;
+  margin: 0px 10px
+}
+
+.dashboard-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.dashboard-category {
+  width: calc(50% - 28px);
+  margin-bottom: 10px;
+  background: #ffdbe4;
+  padding: 10px;
+}
+
+.dashboard-category:nth-child(odd) {
+   margin-right:15px
+} 
+
+.category-title-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

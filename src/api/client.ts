@@ -19,4 +19,7 @@ client.configure(auth({ storageKey: "feathers-jwt" }));
 // Configure an AJAX library (see below) with that client;
 client.configure(restClient.axios(axios));
 
-export const userService = client.service('user')
+export const userService = client.service('users');
+export const postService = client.service('post');
+export const tagService = client.service('tag');
+export const postToTagService = client.service('posts-tags')
