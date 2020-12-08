@@ -12,7 +12,7 @@ export type PostData = {
   pdf: string;
   excerpt: string;
   author: string;
-  image: string;
+  image: any;
 }
 
 type Post = PostData & {
@@ -21,4 +21,4 @@ type Post = PostData & {
   createdAt: string;
 }
 
-export default Post
+export default Post 

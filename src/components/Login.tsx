@@ -84,9 +84,8 @@ function Login() {
       <Header />
       <div className="container">
         <div className="title-container">
-          <div className="line" />
-          <h4 className="dashboard-title">Login</h4>
-          <div className="line" />
+          <h4 className='title'>Login</h4>
+
         </div>
           {status === FormStatus.SUCCESS ? (
             <>

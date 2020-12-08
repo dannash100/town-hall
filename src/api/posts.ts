@@ -1,5 +1,6 @@
 import Post, { PostData, PostUpdateData } from "../types/Post"
-import { postService } from "./client"
+import { TagData } from "../types/Tags";
+import { postService, tagService } from "./client"
 
 // include: [{
 //   model:db.Product, 
@@ -17,3 +18,5 @@ export const fetchPosts = async (): Promise<Post[]> => {
   const { data } = await postService.find();
   return data;
 }
+
+export const createTag = (data: TagData) => tagService.create(data)

@@ -1,16 +1,17 @@
 import { observer } from "mobx-react-lite";
 import React from "react";
 import { useHistory } from "react-router-dom";
-import { ReactComponent as Logo } from "../images/TH.svg";
+import { ReactComponent as Logo } from "../images/th-logo-stamp.svg";
 import { useUserStore } from "../state";
 import "./Header.css";
 
 interface Props {
   onLogout?: () => void;
   isHome?: boolean;
+  
 }
 
-function Header({ onLogout, isHome }: Props) {
+function Header({ onLogout,  isHome }: Props) {
   const userStore = useUserStore();
   const history = useHistory();
 
@@ -31,7 +32,7 @@ function Header({ onLogout, isHome }: Props) {
           </button>
       )}
       <div style={{ flexGrow: 1 }} />
-      {userStore.user && (
+      {userStore.user && !isHome && (
         <>
           <p className="username-text">User: {userStore.user.username}</p>
           <button onClick={handleLogout} className="button">

@@ -1,0 +1,16 @@
+.FixedTitle {
+
+  position: fixed;
+  top: -49px;
+  left: 51px;
+  height: 251px;
+
+  /* top: -224px;
+  left: 120px;
+  font-size: 138px;
+  color: #feff00;
+  text-transform: uppercase;
+  text-shadow: -8px 12px 8px rgb(254 255 0), 3px 11px 7px rgb(254 255 0),
+    -15px 17px 3px rgb(254 255 0), 6px 17px 4px rgb(254 255 0),
+    9px 0px 11px rgb(254 255 0); */
+}

@@ -1,5 +1,6 @@
 .Header {
   padding: 15px 25px;
+  padding-bottom: 76px;
   display: flex;
   align-items: center;
 }
@@ -9,7 +10,7 @@
 }
 
 .logo {
-  width: 55px;
+  width: 38px;
 }
 
 .username-text {

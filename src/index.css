@@ -13,6 +13,13 @@ code {
 }
 
 @font-face {
+  font-family: "Phaser-AGX";
+  src: local("Phaser-AGX"),
+    url("./fonts/Phase-AGX_98-22-66.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
   font-family: "LifeEFRegular";
   src: local("LifeEFRegular"),
     url("./fonts/LifeEF\ Regular.otf") format("opentype");

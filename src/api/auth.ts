@@ -1,4 +1,4 @@
-import { LoginCredentials, RegistrationCredentials } from "../types/User";
+import User, { LoginCredentials, RegistrationCredentials, UserPatchData } from "../types/User";
 import { client, userService } from "./client";
 
 export const logout = () => client.logout();
@@ -32,3 +32,20 @@ export const register = async (credentials: RegistrationCredentials) => {
     throw err;
   }
 };
+
+export const fetchUsers = async () : Promise<User[]> => {
+  try {
+    const { data } = await userService.find({
+      query: {
+        $select: ['id', 'username', 'email', 'approved']
+      }
+    });
+    return data;
+  } catch (err) {
+    throw err
+  }
+}
+
+export const patchUser = (id: number, data: UserPatchData) => userService.patch(id, data)
+
+export const deleteUser = (id: number) => userService.remove(id)

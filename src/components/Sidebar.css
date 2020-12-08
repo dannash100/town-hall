@@ -1,0 +1,20 @@
+.Sidebar {
+  width: 200px;
+  position: fixed;
+  right: 0;
+  top:0;
+  padding-top: 15px
+}
+
+.sidebar-content > p {
+  font-family: 'Phaser-AGX';
+  font-size: 22px;
+}
+
+.sidebar-content {
+  margin-bottom: 30px
+}
+
+.tag-entry {
+  cursor: pointer;
+}

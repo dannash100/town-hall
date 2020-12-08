@@ -6,6 +6,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import CreatePost from "./components/posts/Create";
+import CreateTag from "./components/tags/Create";
 import { BlogProvider, UserProvider } from "./state";
 
 function App() {
@@ -15,6 +16,9 @@ function App() {
         <BlogProvider>
           <Router>
             <Switch>
+              <Route exact path="/tags/create">
+                <CreateTag />
+              </Route>
               <Route exact path="/posts/create">
                 <CreatePost />
               </Route>

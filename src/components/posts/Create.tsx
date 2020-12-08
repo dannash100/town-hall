@@ -21,6 +21,8 @@ function CreatePost() {
   const userStore = useUserStore();
   const blogStore = useBlogStore();
 
+  const [showForm, setShowForm] = useState<null | Boolean>(null);
+
   const [numPages, setNumPages] = useState<null | number>(null);
   const [pageNumber, setPageNumber] = useState(1);
 
@@ -115,6 +117,11 @@ function CreatePost() {
   const login = async () => {
     try {
       await userStore.login();
+      if (userStore.user?.approved) {
+        setShowForm(true);
+      } else {
+        setShowForm(false);
+      }
     } catch (err) {
       handleLogoutDashboard();
       console.log(err);
@@ -129,126 +136,138 @@ function CreatePost() {
     <div className="Register">
       <Header onLogout={handleLogoutDashboard} />
       <div className="container">
-        <h4 className="title">Create Post</h4>
-        {status === FormStatus.SUCCESS ? (
-          <p className="subtitle">
-            Successfully created post <i>{values.title}</i>
-            Redirecting to Dashboard
-          </p>
-        ) : (
+        {showForm ? (
           <>
-            <div className="input-container">
-              <input
-                name="title"
-                onChange={handleChange("title")}
-                placeholder="Title"
-                value={values.title}
-              />
-              <p className="helper-text">{helperText.title}</p>
-            </div>
-
-            <div className="input-container">
-              <input
-                name="author"
-                onChange={handleChange("author")}
-                placeholder="Author"
-                value={values.author}
-              />
-              <p className="helper-text">{helperText.author}</p>
-            </div>
-
-            <div className="input-container">
-              <textarea
-                name="excerpt"
-                onChange={handleChange("excerpt")}
-                placeholder="Post Excerpt"
-                value={values.excerpt}
-              />
-              <p className="helper-text">{helperText.excerpt}</p>
-            </div>
-
-            <div className="input-container">
-              <div className="upload-label">Upload PDF document</div>
-              <input
-                type="file"
-                name="pdf"
-                onChange={handleUpload("pdf")}
-                accept=".pdf"
-              />
-              {values.pdf && (
-                <div className="pdf-container">
-                  <Document
-                    className="pdf"
-                    file={values.pdf}
-                    onLoadSuccess={onDocumentLoadSuccess}
-                  >
-                    <Page pageNumber={pageNumber} />
-                  </Document>
-                  <div className="pdf-controls">
-                    <p className="pdf-page-text">
-                      Page {pageNumber} of {numPages}
-                    </p>
-                    {numPages && numPages > 1 && (
-                      <>
-                        {pageNumber > 1 && (
-                          <button
-                            onClick={handleDocumentPrev}
-                            className="button"
-                          >
-                            Previous
-                          </button>
-                        )}
-                        {pageNumber < numPages && (
-                          <button
-                            onClick={handleDocumentNext}
-                            className="button"
-                          >
-                            Next
-                          </button>
-                        )}
-                      </>
-                    )}
-                  </div>
+            <h4 className="title">Create Post</h4>
+            {status === FormStatus.SUCCESS ? (
+              <p className="subtitle">
+                Successfully created post <i>{values.title}</i>
+                Redirecting to Dashboard
+              </p>
+            ) : (
+              <>
+                <div className="input-container">
+                  <input
+                    name="title"
+                    onChange={handleChange("title")}
+                    placeholder="Title"
+                    value={values.title}
+                  />
+                  <p className="helper-text">{helperText.title}</p>
                 </div>
-              )}
-            </div>
-            <div className="input-container">
-              <div className="upload-label">Upload Image</div>
-              <input
-                onChange={handleUpload("image")}
-                type="file"
-                name="image"
-                accept={"image/x-png,image/gif,image/jpeg"}
-              />
-              {values.image && (
-                <img
-                  src={values.image}
-                  alt="post-image"
-                  className="image-preview"
-                />
-              )}
-            </div>
 
-            <div className="flex-container">
-              {status === FormStatus.SUBMITTING && (
-                <>
-                  <div className="dot"></div>
-                  <div className="dot"></div>
-                  <div className="dot"></div>
-                </>
-              )}
-              {status === FormStatus.INITIAL && (
-                <button onClick={handleSubmit}>Submit</button>
-              )}
-              {status === FormStatus.ERROR && (
-                <>
-                  <p className="submit-error">{errorMessage}</p>
-                  <button onClick={handleReset}>Reset</button>
-                  <button onClick={handleSubmit}>Submit Again</button>
-                </>
-              )}
-            </div>
+                <div className="input-container">
+                  <input
+                    name="author"
+                    onChange={handleChange("author")}
+                    placeholder="Author"
+                    value={values.author}
+                  />
+                  <p className="helper-text">{helperText.author}</p>
+                </div>
+
+                <div className="input-container">
+                  <textarea
+                    name="excerpt"
+                    onChange={handleChange("excerpt")}
+                    placeholder="Post Excerpt"
+                    value={values.excerpt}
+                  />
+                  <p className="helper-text">{helperText.excerpt}</p>
+                </div>
+
+                <div className="input-container">
+                  <div className="upload-label">Upload PDF document</div>
+                  <input
+                    type="file"
+                    name="pdf"
+                    onChange={handleUpload("pdf")}
+                    accept=".pdf"
+                  />
+                  {values.pdf && (
+                    <div className="pdf-container">
+                      <Document
+                        className="pdf"
+                        file={values.pdf}
+                        onLoadSuccess={onDocumentLoadSuccess}
+                      >
+                        <Page pageNumber={pageNumber} />
+                      </Document>
+                      <div className="pdf-controls">
+                        <p className="pdf-page-text">
+                          Page {pageNumber} of {numPages}
+                        </p>
+                        {numPages && numPages > 1 && (
+                          <>
+                            {pageNumber > 1 && (
+                              <button
+                                onClick={handleDocumentPrev}
+                                className="button"
+                              >
+                                Previous
+                              </button>
+                            )}
+                            {pageNumber < numPages && (
+                              <button
+                                onClick={handleDocumentNext}
+                                className="button"
+                              >
+                                Next
+                              </button>
+                            )}
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </div>
+                <div className="input-container">
+                  <div className="upload-label">Upload Image</div>
+                  <input
+                    onChange={handleUpload("image")}
+                    type="file"
+                    name="image"
+                    accept={"image/x-png,image/gif,image/jpeg"}
+                  />
+                  {values.image && (
+                    <img
+                      src={values.image}
+                      alt="post-image"
+                      className="image-preview"
+                    />
+                  )}
+                </div>
+
+                <div className="flex-container">
+                  {status === FormStatus.SUBMITTING && (
+                    <>
+                      <div className="dot"></div>
+                      <div className="dot"></div>
+                      <div className="dot"></div>
+                    </>
+                  )}
+                  {status === FormStatus.INITIAL && (
+                    <button onClick={handleSubmit}>Submit</button>
+                  )}
+                  {status === FormStatus.ERROR && (
+                    <>
+                      <p className="submit-error">{errorMessage}</p>
+                      <button onClick={handleReset}>Reset</button>
+                      <button onClick={handleSubmit}>Submit Again</button>
+                    </>
+                  )}
+                </div>
+              </>
+            )}
           </>
+        ) : showForm === false ? (
+          <h6 className="subtitle">
+            {userStore.user
+              ? "Please await approval before attempting to create posts"
+              : "Please login to create posts"}
+          </h6>
+        ) : (
+          <h6 className="subtitle">Loading Please Wait</h6>
         )}
       </div>
     </div>
