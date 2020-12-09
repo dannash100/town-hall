@@ -8,7 +8,7 @@ import { FormStatus } from "../../types/Forms";
 
 const initialState = {
   name: "",
-  description: ""
+  description: "",
 };
 
 function CreateTag() {
@@ -126,8 +126,6 @@ function CreateTag() {
                   />
                   <p className="helper-text">{helperText.description}</p>
                 </div>
-=
-          
                 <div className="flex-container">
                   {status === FormStatus.SUBMITTING && (
                     <>
