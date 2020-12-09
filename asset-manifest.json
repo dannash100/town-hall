@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/town-hall/static/css/main.44a8765b.chunk.css",
+    "main.js": "/town-hall/static/js/main.86034ab3.chunk.js",
+    "main.js.map": "/town-hall/static/js/main.86034ab3.chunk.js.map",
+    "runtime-main.js": "/town-hall/static/js/runtime-main.510ae010.js",
+    "runtime-main.js.map": "/town-hall/static/js/runtime-main.510ae010.js.map",
+    "static/js/2.8b8fe91d.chunk.js": "/town-hall/static/js/2.8b8fe91d.chunk.js",
+    "static/js/2.8b8fe91d.chunk.js.map": "/town-hall/static/js/2.8b8fe91d.chunk.js.map",
+    "static/js/3.ad43c8c9.chunk.js": "/town-hall/static/js/3.ad43c8c9.chunk.js",
+    "static/js/3.ad43c8c9.chunk.js.map": "/town-hall/static/js/3.ad43c8c9.chunk.js.map",
+    "index.html": "/town-hall/index.html",
+    "static/css/main.44a8765b.chunk.css.map": "/town-hall/static/css/main.44a8765b.chunk.css.map",
+    "static/js/2.8b8fe91d.chunk.js.LICENSE.txt": "/town-hall/static/js/2.8b8fe91d.chunk.js.LICENSE.txt",
+    "static/js/pdf.worker.entry.ccf1de51.worker.js": "/town-hall/static/js/pdf.worker.entry.ccf1de51.worker.js",
+    "static/js/pdf.worker.entry.ccf1de51.worker.js.LICENSE.txt": "/town-hall/static/js/pdf.worker.entry.ccf1de51.worker.js.LICENSE.txt",
+    "static/js/pdf.worker.entry.ccf1de51.worker.js.map": "/town-hall/static/js/pdf.worker.entry.ccf1de51.worker.js.map",
+    "static/media/index.css": "/town-hall/static/media/Phase-AGX_98-22-66.11d6e794.ttf",
+    "static/media/th-logo-stamp.e3301378.svg": "/town-hall/static/media/th-logo-stamp.e3301378.svg",
+    "static/media/th-piss-stain.eea4412a.svg": "/town-hall/static/media/th-piss-stain.eea4412a.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.510ae010.js",
+    "static/js/2.8b8fe91d.chunk.js",
+    "static/css/main.44a8765b.chunk.css",
+    "static/js/main.86034ab3.chunk.js"
+  ]
+}
