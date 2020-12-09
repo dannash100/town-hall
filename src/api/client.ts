@@ -8,7 +8,7 @@ export const client = feathers();
 const urls = {
   development: "http://localhost:3030",
   test: "http://localhost:3030",
-  production: "https://serene-fjord-70218.herokuapp.com/",
+  production: "https://serene-fjord-70218.herokuapp.com",
 };
 
 // Connect to the same as the browser URL (only in the browser)
