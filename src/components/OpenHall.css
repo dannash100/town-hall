@@ -1,0 +1,15 @@
+.OpenHall {
+  position: relative;
+  padding: 25px;
+  z-index: 1;
+}
+
+.open-hall-container {
+
+  width: 80%;
+}
+
+.open-hall-container > p {
+  font-family: 'LifeEFRegular';
+  font-size: 28px !important;
+}

@@ -6,6 +6,25 @@ import { useBlogStore, useUserStore } from "../state";
 import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router-dom";
 import User from "../types/User";
+import Tag from "../types/Tags";
+
+const TagListItem = ({ name, id }: Tag) => {
+  const blogStore = useBlogStore();
+  const handleDelete = () => blogStore.deleteTag(id);
+  return (
+    <div className="post-item">
+      <p className="post-item-title">{name}</p>
+      <div style={{ flexGrow: 1 }} />
+      <button
+        style={{ marginLeft: 10 }}
+        onClick={handleDelete}
+        className="button"
+      >
+        Delete
+      </button>
+    </div>
+  );
+};
 
 const PostListItem = ({ title, published, id }: Post) => {
   const blogStore = useBlogStore();
@@ -75,7 +94,7 @@ function Dashboard() {
 
   const handleLogoutDashboard = () => history.push("/login");
   const handleCreatePost = () => history.push("/posts/create");
-  const handleCreateTag = () => history.push("/tags/create")
+  const handleCreateTag = () => history.push("/tags/create");
 
   const initiate = async () => {
     await login();
@@ -85,12 +104,10 @@ function Dashboard() {
       setShowDashboard(false);
       return;
     }
-    if (!blogStore.posts.length) {
-      await blogStore.fetchPosts();
-    }
-    if (!userStore.users) {
-      await userStore.fetchUsers();
-    }
+
+    await blogStore.fetchPosts();
+    await blogStore.fetchTags();
+    await userStore.fetchUsers();
   };
 
   const login = async () => {
@@ -114,7 +131,6 @@ function Dashboard() {
           <>
             <div className="title-container">
               <h4 className="title">Dashboard</h4>
-
             </div>
             <div className="dashboard-content">
               <div className="dashboard-category">
@@ -136,7 +152,11 @@ function Dashboard() {
                   <button onClick={handleCreateTag} className="button">
                     Create
                   </button>
-                </div>
+                    </div>
+                  <div className="post-item-list">
+                    {blogStore.tags &&
+                      blogStore.tags.map((tag) => <TagListItem {...tag} />)}
+                  </div>
               </div>
               <div className="dashboard-category">
                 <div className="category-title-container">

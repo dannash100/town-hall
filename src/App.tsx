@@ -13,6 +13,7 @@ import Dashboard from "./components/Dashboard";
 import CreatePost from "./components/posts/Create";
 import CreateTag from "./components/tags/Create";
 import { BlogProvider, UserProvider } from "./state";
+import OpenHall from "./components/OpenHall";
 
 function App() {
   return (
@@ -25,6 +26,9 @@ function App() {
             </Route>
             <Route exact path="/posts/create">
               <CreatePost />
+            </Route>
+            <Route exact path="/open-hall">
+              <OpenHall />
             </Route>
             <Route exact path="/register">
               <Register />

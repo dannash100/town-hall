@@ -62,7 +62,7 @@ function CreateTag() {
     if (!valid) return;
     setStatus(FormStatus.SUBMITTING);
     try {
-      // await blogStore.createPost(values);
+      await blogStore.createTag(values);
       setStatus(FormStatus.SUCCESS);
       setTimeout(() => {
         history.push("/dashboard");
@@ -102,7 +102,7 @@ function CreateTag() {
             <h4 className="title">Create Tag</h4>
             {status === FormStatus.SUCCESS ? (
               <p className="subtitle">
-                Successfully created tag <i>{values.name}</i>
+                Successfully created tag <i>{values.name}</i>{" "}
                 Redirecting to Dashboard
               </p>
             ) : (

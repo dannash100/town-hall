@@ -8,7 +8,6 @@ import "./Header.css";
 interface Props {
   onLogout?: () => void;
   isHome?: boolean;
-  
 }
 
 function Header({ onLogout,  isHome }: Props) {

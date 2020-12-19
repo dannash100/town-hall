@@ -9,20 +9,27 @@ import PostEntry from "./PostEntry";
 import { useBlogStore } from "../state";
 import FixedTitle from "./FixedTitle";
 import Sidebar from "./Sidebar";
-
+import TagEntry from "./TagEntry";
 
 function Blog() {
   const blogStore = useBlogStore();
   useEffect(() => {
     blogStore.fetchPosts();
-  },[])
+    blogStore.fetchTags();
+  }, []);
+
+  const tagActive = Number.isInteger(blogStore.activeTag);
+  const tag =
+    tagActive && blogStore?.tags?.find((tag) => tag.id === blogStore.activeTag);
+  const posts = tagActive ? blogStore.postsByTags : blogStore.posts;
+
   return (
     <>
       <Header isHome={true} />
-      <FixedTitle/>
-      <Sidebar/>
-    <div className="Blog">
-      {/* <Resizable
+      <FixedTitle />
+      <Sidebar />
+      <div className="Blog">
+        {/* <Resizable
         bounds="parent"
         enable={{
           top: false,
@@ -38,10 +45,9 @@ function Blog() {
         className="resizable-left"
       > */}
         <div className="blog-container">
-          {blogStore?.posts.map(post => {
-
-  
-          return <PostEntry {...post} />
+          {tag && <TagEntry {...tag} />}
+          {posts.map((post) => {
+            return <PostEntry {...post} />;
           })}
           {/* <PostEntry
             id={1}
@@ -71,8 +77,8 @@ function Blog() {
             image={landscapeImg}
           /> */}
         </div>
-      {/* </Resizable> */}
-    </div>
+        {/* </Resizable> */}
+      </div>
     </>
   );
 }

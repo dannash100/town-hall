@@ -1,5 +1,6 @@
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { Document, Page } from "react-pdf/dist/esm/entry.webpack";
+import Select from "react-select";
 import Header from "../Header";
 import "./Create.css";
 
@@ -7,6 +8,7 @@ import { useBlogStore, useUserStore } from "../../state";
 import { observer } from "mobx-react-lite";
 import { useHistory } from "react-router-dom";
 import { FormStatus } from "../../types/Forms";
+import { createPostToTag } from "../../api/posts";
 
 const initialState = {
   title: "",
@@ -14,6 +16,17 @@ const initialState = {
   excerpt: "",
   author: "",
   image: "",
+  tags: [] as Array<number>,
+};
+
+const selectStyles = {
+  multiValue: (styles: any) => {
+    return {
+      fontSize: 16,
+      fontFamily: "LifeEFRegular",
+      ...styles,
+    };
+  },
 };
 
 function CreatePost() {
@@ -36,6 +49,17 @@ function CreatePost() {
   ) => {
     if (e?.target) {
       setValues((oldVals) => ({ ...oldVals, [name]: e.target.value }));
+    }
+  };
+
+  const handleChangeTags = (values: any) => {
+    if (!values) {
+      setValues((oldVals) => ({ ...oldVals, tags: [] }));
+    } else {
+      setValues((oldVals) => ({
+        ...oldVals,
+        tags: values.map((tag: any) => tag.value),
+      }));
     }
   };
 
@@ -101,7 +125,9 @@ function CreatePost() {
     if (!valid) return;
     setStatus(FormStatus.SUBMITTING);
     try {
-      await blogStore.createPost(values);
+      const { tags, ...postValues } = values;
+      const post = await blogStore.createPost(postValues);
+      await blogStore.createPostToTags(post.id, tags)
       setStatus(FormStatus.SUCCESS);
       setTimeout(() => {
         history.push("/dashboard");
@@ -141,7 +167,7 @@ function CreatePost() {
             <h4 className="title">Create Post</h4>
             {status === FormStatus.SUCCESS ? (
               <p className="subtitle">
-                Successfully created post <i>{values.title}</i>
+                Successfully created post <i>{values.title}</i>{" "}
                 Redirecting to Dashboard
               </p>
             ) : (
@@ -164,6 +190,21 @@ function CreatePost() {
                     value={values.author}
                   />
                   <p className="helper-text">{helperText.author}</p>
+                </div>
+
+                <div className="input-container">
+                  <Select
+                    styles={selectStyles}
+                    placeholder="Tags"
+                    isMulti
+                    name="tags"
+                    onChange={handleChangeTags}
+                    options={blogStore.tags?.map((tag) => ({
+                      label: tag.name,
+                      value: tag.id,
+                    }))}
+                    className="basic-multi-select"
+                  />
                 </div>
 
                 <div className="input-container">

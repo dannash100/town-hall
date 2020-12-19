@@ -1,9 +1,12 @@
 .Sidebar {
   width: 200px;
+  height: 100%;
   position: fixed;
   right: 0;
   top:0;
-  padding-top: 15px
+  padding-top: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .sidebar-content > p {
@@ -11,7 +14,12 @@
   font-size: 22px;
 }
 
-.sidebar-content {
+.sidebar-content-open-hall > p {
+  font-family: 'Phaser-CGX';
+  font-size: 22px;
+}
+
+.sidebar-content, .sidebar-content-open-hall {
   margin-bottom: 30px
 }
 

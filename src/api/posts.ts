@@ -1,6 +1,6 @@
 import Post, { PostData, PostUpdateData } from "../types/Post"
 import { TagData } from "../types/Tags";
-import { postService, tagService } from "./client"
+import { postService, postToTagService, tagService } from "./client"
 
 // include: [{
 //   model:db.Product, 
@@ -19,4 +19,32 @@ export const fetchPosts = async (): Promise<Post[]> => {
   return data;
 }
 
+export const deleteTag = (id: number) => tagService.remove(id);
+
 export const createTag = (data: TagData) => tagService.create(data)
+
+export const fetchTags = () => tagService.find();
+
+export const createPostToTag = (postId: number, tagId: number) => postToTagService.create({
+  postId,
+  tagId
+})
+
+export const fetchPostsByTag = async (tag: number) => {
+  const { data } = await postService.find({
+    query: {
+      include:
+      {
+        service: 'tag',
+        through: {
+          where: {
+            tagId: tag
+          }
+        },
+        required: true
+      }
+
+    }
+  })
+  return data
+}
