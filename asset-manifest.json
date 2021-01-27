@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/town-hall/static/css/main.598ab063.chunk.css",
+    "main.css": "/town-hall/static/css/main.71ca1f1a.chunk.css",
     "main.js": "/town-hall/static/js/main.002f8afc.chunk.js",
     "main.js.map": "/town-hall/static/js/main.002f8afc.chunk.js.map",
     "runtime-main.js": "/town-hall/static/js/runtime-main.f0eff99f.js",
@@ -10,7 +10,7 @@
     "static/js/3.9b8e463f.chunk.js": "/town-hall/static/js/3.9b8e463f.chunk.js",
     "static/js/3.9b8e463f.chunk.js.map": "/town-hall/static/js/3.9b8e463f.chunk.js.map",
     "index.html": "/town-hall/index.html",
-    "static/css/main.598ab063.chunk.css.map": "/town-hall/static/css/main.598ab063.chunk.css.map",
+    "static/css/main.71ca1f1a.chunk.css.map": "/town-hall/static/css/main.71ca1f1a.chunk.css.map",
     "static/js/2.1011ac5b.chunk.js.LICENSE.txt": "/town-hall/static/js/2.1011ac5b.chunk.js.LICENSE.txt",
     "static/js/pdf.worker.entry.ccf1de51.worker.js": "/town-hall/static/js/pdf.worker.entry.ccf1de51.worker.js",
     "static/js/pdf.worker.entry.ccf1de51.worker.js.LICENSE.txt": "/town-hall/static/js/pdf.worker.entry.ccf1de51.worker.js.LICENSE.txt",
@@ -22,7 +22,7 @@
   "entrypoints": [
     "static/js/runtime-main.f0eff99f.js",
     "static/js/2.1011ac5b.chunk.js",
-    "static/css/main.598ab063.chunk.css",
+    "static/css/main.71ca1f1a.chunk.css",
     "static/js/main.002f8afc.chunk.js"
   ]
 }
