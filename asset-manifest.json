@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/town-hall/static/css/main.badf07cf.chunk.css",
-    "main.js": "/town-hall/static/js/main.209de0af.chunk.js",
-    "main.js.map": "/town-hall/static/js/main.209de0af.chunk.js.map",
+    "main.js": "/town-hall/static/js/main.ee80a620.chunk.js",
+    "main.js.map": "/town-hall/static/js/main.ee80a620.chunk.js.map",
     "runtime-main.js": "/town-hall/static/js/runtime-main.f0eff99f.js",
     "runtime-main.js.map": "/town-hall/static/js/runtime-main.f0eff99f.js.map",
     "static/js/2.40c5504e.chunk.js": "/town-hall/static/js/2.40c5504e.chunk.js",
@@ -23,6 +23,6 @@
     "static/js/runtime-main.f0eff99f.js",
     "static/js/2.40c5504e.chunk.js",
     "static/css/main.badf07cf.chunk.css",
-    "static/js/main.209de0af.chunk.js"
+    "static/js/main.ee80a620.chunk.js"
   ]
 }
